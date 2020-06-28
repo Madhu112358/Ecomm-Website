@@ -1,0 +1,6 @@
+curl https://api.stripe.com/v1/payment_intents \
+  -u sk_test_EFJrjyPPkpUl8dqJWopxjBJY00q16Itn2j: \
+  -d amount=1000 \
+  -d currency=usd \
+  -d "payment_method_types[]"=card \
+  -d receipt_email="jenny.rosen@example.com"
