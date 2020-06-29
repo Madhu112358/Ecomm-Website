@@ -25,7 +25,7 @@ SECRET_KEY = 'ofd=89e!-7390tltr-)@=af9)s3a(ot@-l^$o1@b6o*r(%1v+='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ecomm-madhu.herokuapp.com']
 
 
 # Application definition
