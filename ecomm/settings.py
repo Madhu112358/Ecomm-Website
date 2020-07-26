@@ -139,3 +139,4 @@ MEDIA_URL = '/image/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'static','image')
 STRIPE_PUBLISHABLE_KEY = 'pk_test_BCzj3veEjEz2NAaAfvMkTjGB0027B9TAeK'
 STRIPE_SECRET_KEY = 'sk_test_EFJrjyPPkpUl8dqJWopxjBJY00q16Itn2j'
+django_heroku.settings(locals())
