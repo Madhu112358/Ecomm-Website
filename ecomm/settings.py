@@ -81,20 +81,9 @@ WSGI_APPLICATION = 'ecomm.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default':{
-#        dj_database_url.config(conn_max_age=600, ssl_require=True)
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd4v4sjot5lt0jb',
-        'USER': 'ebuzrkbplnyqhv',
-        'PASSWORD': '7df25fd2b1ee17cb1421121b1e9177441f96410229e883ac5f3f1b5f0d445d83',
-        'HOST': 'ec2-18-214-211-47.compute-1.amazonaws.com',
-        'PORT': '5432'
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 
 # Password validation
@@ -136,6 +125,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATICFILES = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/image/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'static','image')
