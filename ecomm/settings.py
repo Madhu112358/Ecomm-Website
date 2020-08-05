@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
-import psycopg2
+#import psycopg2
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ofd=89e!-7390tltr-)@=af9)s3a(ot@-l^$o1@b6o*r(%1v+='
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,14 @@ MIDDLEWARE = [
 # Simplified static file serving.     # https://warehouse.python.org/project/whitenoise/
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+#AWS
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME = 'ecomm-madhu'
+AWS_S3_REGION_NAME = 'us-east-2'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
 
 ROOT_URLCONF = 'ecomm.urls'
 
@@ -127,8 +136,9 @@ STATICFILES = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = '/image/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'static','image')
-STRIPE_PUBLISHABLE_KEY = 'pk_test_BCzj3veEjEz2NAaAfvMkTjGB0027B9TAeK'
-STRIPE_SECRET_KEY = 'sk_test_EFJrjyPPkpUl8dqJWopxjBJY00q16Itn2j'
+
+#MEDIA_URL = '/image/'
+#MEDIA_ROOT = os.path.join(BASE_DIR,'static','image')
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 django_heroku.settings(locals())
