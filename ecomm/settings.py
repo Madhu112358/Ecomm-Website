@@ -135,17 +135,16 @@ django_heroku.settings(locals())
 
 
 #AWS
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# AWS_LOCATION = 'image'
-# MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-#MEDIA_ROOT = os.path.join(BASE_DIR,'static','image')
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'ecomm-madhu'
+AWS_S3_FILE_OVERWRITE = False
+AWS_LOCATION = 'image'
 AWS_S3_REGION_NAME = 'us-east-2'
-AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
-S3DIRECT_DESTINATIONS = {
-    'primary_destination': {
-        'key': 'uploads/',
-    },
-}
+# AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
+# S3DIRECT_DESTINATIONS = {
+#     'primary_destination': {
+#         'key': 'uploads/',
+#     },
+# }
